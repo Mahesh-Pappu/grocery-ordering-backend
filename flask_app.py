@@ -24,7 +24,7 @@ app.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY', 'a_very_strong_fallback_s
 CORS(
     app,
     resources={r"/api/*": {
-        "origins": "https://grocery-mart.onrender.com",  # Ensure no trailing slash
+        "origins": "*",  # Ensure no trailing slash
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"]
     }},
