@@ -23,13 +23,13 @@ app.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY', 'a_very_strong_fallback_s
 # but using os.getenv("FRONTEND_URL") and setting it on Render is more flexible.
 CORS(
     app,
-    resources={r"/api/*": {
-        "origins": "*",  # Ensure no trailing slash
+    # Apply to all resources
+    resources={r"/*": { 
+        "origins": "*", # Allow any origin
         "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"]
+        "allow_headers": ["Content-Type", "Authorization", "X-Requested-With"] # Add common ones
     }},
-    supports_credentials=True,
-    expose_headers=["Content-Length"]
+    supports_credentials=True 
 )
 
 @app.teardown_appcontext
