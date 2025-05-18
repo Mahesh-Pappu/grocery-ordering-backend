@@ -6,6 +6,4 @@ PyJWT
 bcrypt
 Werkzeug
 python-dotenv
-gunicorn         
-psycopg2-binary 
-decimal          
+gunicorn                 
