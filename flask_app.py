@@ -23,11 +23,13 @@ app.config['SECRET_KEY'] = os.getenv('APP_SECRET_KEY', 'a_very_strong_fallback_s
 # but using os.getenv("FRONTEND_URL") and setting it on Render is more flexible.
 CORS(
     app,
-    resources={r"/api/*": {"origins": "https://grocery-mart.onrender.com"}}, # Match your API path prefix
-    allow_headers=["Content-Type", "Authorization"], # Crucial for login (Authorization) and POST data (Content-Type)
-    methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"], # Ensure OPTIONS is listed
-    supports_credentials=True, # If you were to use cookies/session auth with credentials in future
-    expose_headers=["Content-Length"] # Example, if frontend needs to read specific non-standard headers
+    resources={r"/api/*": {
+        "origins": "https://grocery-mart.onrender.com",  # Ensure no trailing slash
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"]
+    }},
+    supports_credentials=True,
+    expose_headers=["Content-Length"]
 )
 
 @app.teardown_appcontext
