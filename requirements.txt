@@ -1,9 +1,9 @@
 # backend/requirements.txt
-
 Flask
 Flask-CORS
 PyJWT
 bcrypt
 Werkzeug
 python-dotenv
-gunicorn                 
+gunicorn
+psycopg2-binary 
